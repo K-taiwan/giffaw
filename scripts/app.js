@@ -30,11 +30,17 @@ function onError(xhr, status, errorThrown) {
 //     error: onError,
 // });
 
-$.ajax({
-    method: "GET",
-    url: "http://api.giphy.com/v1/gifs/search",
-    data: $("form").serialize(),
-    success: onSuccess,
-    error: onError,
-});
+$('form').on('submit', function (e) {
+    e.preventDefault();
+    var search = $('#search').val();
 
+
+    $.ajax({
+        method: "GET",
+        url: "http://api.giphy.com/v1/gifs/search?q=" + search + "dc6zaTOxFJmzC",
+        data: $("form").serialize(),
+        success: onSuccess,
+        error: onError,
+    });
+
+})
